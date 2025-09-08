@@ -1,5 +1,17 @@
 :root {
   --clr-bg-primary: #171717;
+  --clr-bg-secondary: #191919;
+  --clr-bg-nav: #212121;
+  --clr-text-primary: #ffffff;
+  --clr-accent: #f3b3c4;
+
+  --rounded-pill: 9999px;
+
+  --screen-xs-min: 576px;
+  --screen-sm-min: 768px;
+  --screen-md-min: 992px;
+  --screen-lg-min: 1200px;
+  --screen-xl-min: 1440px;
 }
 
 *,
@@ -28,9 +40,7 @@ dd {
   margin-block-end: 0;
 }
 
-
-ul[role="list"],
-ol[role="list"] {
+ul {
   list-style: none;
 }
 
@@ -38,8 +48,8 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-size-adjust: 0.52;
 }
-
 
 h1,
 h2,
@@ -62,10 +72,15 @@ p {
   text-wrap: pretty;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
-
 
 img,
 picture {
@@ -80,7 +95,6 @@ select {
   font-family: inherit;
   font-size: inherit;
 }
-
 
 :target {
   scroll-margin-block: 5ex;
@@ -121,7 +135,64 @@ body {
   background-color: var(--clr-bg-primary);
 }
 
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin-inline: auto;
+}
+
+header {
+  margin-top: 1.5rem;
+}
+
+.nav-links {
+  margin: 0 auto;
+  width: fit-content;
+  border-radius: var(--rounded-pill);
+  padding: 0.25rem;
+  background-color: var(--clr-bg-nav);
+  display: flex;
+}
+
+.nav-link {
+  border-radius: var(--rounded-pill);
+  padding: 0.625rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--clr-text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: background-color 0.4s ease;
+
+  &:hover {
+    background-color: var(--clr-bg-primary);
+  }
+
+  &.active {
+    color: var(--clr-accent);
+    background-color: var(--clr-bg-primary);
+  }
+}
+
 h1 {
-  color: white;
-  font-weight: 400;
+  font-size: 4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: var(--clr-text-primary);
+
+  span {
+    color: var(--clr-text-primary);
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    padding: 0 4rem;
+  }
 }
