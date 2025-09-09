@@ -44,7 +44,7 @@ function createBottomContent() {
   const textBox = document.createElement("div");
   textBox.className = "textbox";
   const title = document.createElement("h2");
-  title.textContent = "Meet the chef";
+  title.textContent = "Meet the Chef";
   const para = document.createElement("p");
   para.textContent =
     "Our head chef welcomes you with a personal message and shares the passion that inspires every dish we serve.";
