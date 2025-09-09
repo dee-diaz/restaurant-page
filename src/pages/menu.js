@@ -1,5 +1,5 @@
 export function createMenu() {
-  const container = document.querySelector(".container");
+  const container = document.createElement("div");
   const h1 = document.querySelector("h1");
   h1.textContent = "Menu";
 
@@ -46,6 +46,8 @@ export function createMenu() {
   container.appendChild(col2);
   container.appendChild(col3);
   container.appendChild(col4);
+
+  return container;
 }
 
 function createList(listTitle, listItemsArr) {

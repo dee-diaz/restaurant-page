@@ -37,8 +37,15 @@ class Nav {
   }
 
   switchTab(e) {
-    if (!e.target.classList.contains("nav-link")) return;
-    this.currentTab = e.target.getAttribute("data-tab");
+    if (e.target.classList.contains("btn-cta")) {
+      this.currentTab = "reserve";
+    }
+    else if (e.target.classList.contains("nav-link")) {
+      this.currentTab = e.target.getAttribute("data-tab");
+    }
+    else {
+      return;
+    }
     this._cache.tabs.forEach((tab) => tab.classList.remove("active"));
     this._renderActiveTab();
 
@@ -46,11 +53,16 @@ class Nav {
     container.innerHTML = "";
 
     if (this.currentTab === this.tabs[0]) {
-      createHome();
+      const home = createHome();
+      container.appendChild(home);
+      const button = document.querySelector(".btn-cta");
+      button.addEventListener("click", this.switchTab.bind(this));
     } else if (this.currentTab === this.tabs[1]) {
-      createMenu();
+      const menu = createMenu();
+      container.appendChild(menu);
     } else {
-      createReservations();
+      const reservations = createReservations();
+      container.appendChild(reservations);
     }
   }
 

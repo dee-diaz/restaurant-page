@@ -1,5 +1,4 @@
 function createTopContent() {
-  const container = document.querySelector(".container");
   const h1 = document.querySelector("h1");
   h1.textContent = "Heart of japanese flavor";
 
@@ -33,11 +32,10 @@ function createTopContent() {
   topContainer.appendChild(textBox);
   topContainer.appendChild(topImage);
 
-  container.appendChild(topContainer);
+  return topContainer;
 }
 
 function createBottomContent() {
-  const container = document.querySelector(".container");
   const bottomContainer = document.createElement("div");
   bottomContainer.className = "bottom-container";
 
@@ -58,12 +56,23 @@ function createBottomContent() {
   bottomContainer.appendChild(textBox);
   bottomContainer.appendChild(bottomImage);
 
-  container.appendChild(bottomContainer);
+  return bottomContainer;
 }
 
 function createHome() {
-  createTopContent();
-  createBottomContent();
+  const container = document.createElement("div");
+  const topContainer = createTopContent();
+  const bottomContainer = createBottomContent();
+
+  container.appendChild(topContainer);
+  container.appendChild(bottomContainer);
+
+  return container;
+}
+
+function activateCtaButton() {
+  const button = document.querySelector(".btn-cta");
+  button.addEventListener("click", this.nav.switchTab.bind(this.nav));
 }
 
 export default createHome;

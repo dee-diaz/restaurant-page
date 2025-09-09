@@ -201,7 +201,7 @@ header {
   border: 1px solid var(--clr-border);
 }
 
-.container:has(.menu-list) {
+.container:has(.menu-list) > div {
   display: flex;
   flex-direction: column;
 }
@@ -427,7 +427,7 @@ h3 {
     border-radius: var(--rounded-40);
   }
 
-  .container:has(.menu-list) {
+  .container:has(.menu-list) > div {
     flex-direction: row;
   }
 

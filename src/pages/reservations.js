@@ -1,5 +1,5 @@
 export function createReservations() {
-  const container = document.querySelector(".container");
+  const container = document.createElement("div");
   const h1 = document.querySelector("h1");
   h1.textContent = "Reservations";
 
@@ -42,6 +42,8 @@ export function createReservations() {
   container.appendChild(topCont);
   container.appendChild(infoCont);
   container.appendChild(imageCont);
+
+  return container;
 }
 
 function createContactDiv() {
