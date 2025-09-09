@@ -2,7 +2,6 @@ import "./style.css";
 import Nav from "./components/Nav";
 import createHome from "./pages/home";
 import logo from "./assets/img/logo.svg";
-import { createReservations } from "./pages/reservations";
 
 class App {
   constructor() {
@@ -40,12 +39,12 @@ class App {
   }
 
   _activateCtaButton() {
-  document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('btn-cta')) {
-      this.nav.switchTab(e);
-    }
-  })
-}
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("btn-cta")) {
+        this.nav.switchTab(e);
+      }
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
