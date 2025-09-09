@@ -1,20 +1,25 @@
+import { createMenu } from "../pages/menu";
+import createHome from "../pages/home";
+import { createReservations } from "../pages/reservations";
+
 class Nav {
   constructor(tabs) {
     this.tabs = tabs;
     this.currentTab = tabs[0];
     this._createNav();
-    this._cache = { tabs: document.querySelectorAll(".nav-link") };
+    this._cache = {
+      tabs: document.querySelectorAll(".nav-link"),
+    };
     this._renderActiveTab();
     this._bindEvents();
   }
-
 
   _createNav() {
     const navEl = document.querySelector("nav");
     const navList = document.createElement("ul");
     navList.className = "nav-links";
 
-    this.tabs.forEach(tab => {
+    this.tabs.forEach((tab) => {
       const navItem = document.createElement("li");
       const navBtn = document.createElement("button");
       navBtn.className = "nav-link";
@@ -33,13 +38,26 @@ class Nav {
 
   switchTab(e) {
     if (!e.target.classList.contains("nav-link")) return;
-    this.currentTab = e.target.getAttribute("data-tab"); 
-    this._cache.tabs.forEach(tab => tab.classList.remove("active"));
+    this.currentTab = e.target.getAttribute("data-tab");
+    this._cache.tabs.forEach((tab) => tab.classList.remove("active"));
     this._renderActiveTab();
+
+    const container = document.querySelector(".container");
+    container.innerHTML = "";
+
+    if (this.currentTab === this.tabs[0]) {
+      createHome();
+    } else if (this.currentTab === this.tabs[1]) {
+      createMenu();
+    } else {
+      createReservations();
+    }
   }
 
   _renderActiveTab() {
-    const activeButton = document.querySelector(`[data-tab="${this.currentTab}"]`);
+    const activeButton = document.querySelector(
+      `[data-tab="${this.currentTab}"]`
+    );
     activeButton?.classList.add("active");
   }
 }

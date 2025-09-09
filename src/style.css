@@ -194,10 +194,16 @@ header {
 }
 
 .container {
+  background-color: var(--clr-bg-secondary);
   width: 100%;
   margin-inline: auto;
   border-radius: var(--rounded-24);
   border: 1px solid var(--clr-border);
+}
+
+.container:has(.menu-list) {
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -289,18 +295,53 @@ h3 {
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right;
   height: 20.8rem;
 }
 
 .top-img {
+  background-position: right;
   background-image: url("./assets/img/sushi.webp");
 }
 
 .bottom-img {
   cursor: pointer;
   background-image: url("./assets/img/chef.webp");
+  background-position: center;
 }
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  
+  &:not(:last-child) {
+    padding-bottom: 0;
+  }
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.menu-list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-list-item {
+  font-size: clamp(1rem, 0.9288rem + 0.3165vw, 1.125rem);
+  color: #BCBCBC;
+  padding-block: 1.25rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--clr-border);
+  }
+}
+
 
 @media (min-width: 992px) {
   #content {
@@ -321,7 +362,12 @@ h3 {
   }
 
   .container {
+    min-height: 48.8rem;
     border-radius: var(--rounded-40);
+  }
+
+  .container:has(.menu-list) {
+    flex-direction: row;
   }
 
   .top-container {
@@ -353,6 +399,11 @@ h3 {
     min-width: 28rem;
     height: 20.8rem;
     background-position: center;
+  }
+
+  .column {
+    gap: 2.5rem;
+    padding: 2.5rem;
   }
 }
 
