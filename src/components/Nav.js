@@ -55,8 +55,6 @@ class Nav {
     if (this.currentTab === this.tabs[0]) {
       const home = createHome();
       container.appendChild(home);
-      const button = document.querySelector(".btn-cta");
-      button.addEventListener("click", this.switchTab.bind(this));
     } else if (this.currentTab === this.tabs[1]) {
       const menu = createMenu();
       container.appendChild(menu);

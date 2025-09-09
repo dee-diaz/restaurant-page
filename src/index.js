@@ -12,6 +12,7 @@ class App {
     this._createLogo();
     this._createHeading();
     this._createContainer();
+    this._activateCtaButton();
   }
 
   _createLogo() {
@@ -36,13 +37,15 @@ class App {
     const container = document.querySelector(".container");
     const home = createHome();
     container.appendChild(home);
-    this._activateCtaButton();
   }
 
   _activateCtaButton() {
-    const button = document.querySelector(".btn-cta");
-    button.addEventListener("click", this.nav.switchTab.bind(this.nav));
-  }
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('btn-cta')) {
+      this.nav.switchTab(e);
+    }
+  })
+}
 }
 
 document.addEventListener("DOMContentLoaded", () => {
